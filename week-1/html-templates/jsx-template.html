@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jamie's Week 1 Assignment</title>
+    <script src="../react.js"></script>
+    <script src="../react-dom.js"></script>
+    <script src="../babel.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Header() {
+        return (
+          <header>
+            <h1>Title of Page</h1>
+          </header>
+        );
+      }
+
+      function Content() {
+        return (
+          <main>
+            <article>
+              <h2>Title of Article</h2>
+              <p>Content of Article</p>
+            </article>
+            <aside>
+              <h2>Title of Sidebar</h2>
+              <ul>
+                <li key="itemOne">Item 1</li>
+                <li key="itemTwo">Item 2</li>
+                <li key="itemThree">Item 3</li>
+              </ul>
+            </aside>
+          </main>
+        );
+      }
+
+      function Footer() {
+        const year = new Date().getFullYear();
+        return (
+          <footer>
+            <p>©Copyright {year} by Jamie. All rights reserved.</p>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <React.Fragment>
+            <Header />
+            <Content />
+            <Footer />
+          </React.Fragment>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

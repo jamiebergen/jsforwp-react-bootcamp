@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jamie's Week 1 Assignment</title>
+    <script src="../react.js"></script>
+    <script src="../react-dom.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      function Header() {
+        const h1PageTitle = React.createElement("h1", {}, "Title of Page");
+        return React.createElement("header", {}, h1PageTitle);
+      }
+
+      function Aside() {
+        const h2SidebarTitle = React.createElement(
+          "h2",
+          {},
+          "Title of Sidebar"
+        );
+        return React.createElement(
+          "aside",
+          {},
+          h2SidebarTitle,
+          React.createElement(
+            "ul",
+            {},
+            React.createElement("li", { key: "itemOne" }, "Item 1"),
+            React.createElement("li", { key: "itemTwo" }, "Item 2"),
+            React.createElement("li", { key: "itemThree" }, "Item 3")
+          )
+        );
+      }
+
+      function Content() {
+        const h2ArticleTitle = React.createElement(
+          "h2",
+          {},
+          "Title of Article"
+        );
+        const pArticleContent = React.createElement(
+          "p",
+          {},
+          "Content of Article"
+        );
+        return React.createElement(
+          "main",
+          {},
+          React.createElement("article", {}, h2ArticleTitle, pArticleContent),
+          Aside()
+        );
+      }
+
+      function Footer() {
+        const year = new Date().getFullYear();
+        const footerText = React.createElement(
+          "p",
+          {},
+          `©Copyright ${year} by Jamie. All rights reserved.`
+        );
+        return React.createElement("footer", {}, footerText);
+      }
+
+      function App() {
+        return React.createElement(
+          "React.Fragment",
+          {},
+          Header(),
+          Content(),
+          Footer()
+        );
+      }
+
+      ReactDOM.render(App(), document.getElementById("root"));
+    </script>
+  </body>
+</html>
