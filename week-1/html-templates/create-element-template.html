@@ -10,12 +10,12 @@
   <body>
     <div id="root"></div>
     <script>
-      function Header() {
+      const Header = () => {
         const h1PageTitle = React.createElement("h1", {}, "Title of Page");
         return React.createElement("header", {}, h1PageTitle);
-      }
+      };
 
-      function Aside() {
+      const Aside = () => {
         const h2SidebarTitle = React.createElement(
           "h2",
           {},
@@ -33,9 +33,9 @@
             React.createElement("li", { key: "itemThree" }, "Item 3")
           )
         );
-      }
+      };
 
-      function Content() {
+      const Content = () => {
         const h2ArticleTitle = React.createElement(
           "h2",
           {},
@@ -52,9 +52,9 @@
           React.createElement("article", {}, h2ArticleTitle, pArticleContent),
           Aside()
         );
-      }
+      };
 
-      function Footer() {
+      const Footer = () => {
         const year = new Date().getFullYear();
         const footerText = React.createElement(
           "p",
@@ -62,9 +62,9 @@
           `©Copyright ${year} by Jamie. All rights reserved.`
         );
         return React.createElement("footer", {}, footerText);
-      }
+      };
 
-      function App() {
+      const App = () => {
         return React.createElement(
           "React.Fragment",
           {},
@@ -72,7 +72,7 @@
           Content(),
           Footer()
         );
-      }
+      };
 
       ReactDOM.render(App(), document.getElementById("root"));
     </script>

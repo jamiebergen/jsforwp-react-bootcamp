@@ -11,15 +11,15 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      function Header() {
+      const Header = () => {
         return (
           <header>
             <h1>My Dog</h1>
           </header>
         );
-      }
+      };
 
-      function Content() {
+      const Content = () => {
         return (
           <main>
             <article>
@@ -45,18 +45,18 @@
             </aside>
           </main>
         );
-      }
+      };
 
-      function Footer() {
+      const Footer = () => {
         const year = new Date().getFullYear();
         return (
           <footer>
             <p>©Copyright {year} by Jamie. All rights reserved.</p>
           </footer>
         );
-      }
+      };
 
-      function App() {
+      const App = () => {
         return (
           <React.Fragment>
             <Header />
@@ -64,7 +64,7 @@
             <Footer />
           </React.Fragment>
         );
-      }
+      };
 
       ReactDOM.render(<App />, document.getElementById("root"));
     </script>
