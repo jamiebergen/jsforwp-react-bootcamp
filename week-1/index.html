@@ -11,41 +11,34 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const Header = () => {
-        return (
-          <header>
-            <h1>My Dog</h1>
-          </header>
-        );
-      };
+      const Header = () => (
+        <header>
+          <h1>My Dog</h1>
+        </header>
+      );
 
-      const Content = () => {
-        return (
-          <main>
-            <article>
-              <h2>About Calico</h2>
-              <img src="images/calico.jpg" width="400" alt="Calico" />
-              <p>
-                Calico is a golden/lab mix who recently turned five! We
-                originally raised her to be a guide dog for{" "}
-                <a href="https://www.guidedogs.com/">
-                  Guide Dogs for the Blind
-                </a>
-                , but she dropped out because she was too friendly with
-                strangers.
-              </p>
-            </article>
-            <aside>
-              <h2>Calico's Redeeming Qualities</h2>
-              <ul>
-                <li key="itemOne">Good at sleeping</li>
-                <li key="itemTwo">Keeps my feet warm</li>
-                <li key="itemThree">Soft</li>
-              </ul>
-            </aside>
-          </main>
-        );
-      };
+      const Content = () => (
+        <main>
+          <article>
+            <h2>About Calico</h2>
+            <img src="images/calico.jpg" width="400" alt="Calico" />
+            <p>
+              Calico is a golden/lab mix who recently turned five! We originally
+              raised her to be a guide dog for{" "}
+              <a href="https://www.guidedogs.com/">Guide Dogs for the Blind</a>,
+              but she dropped out because she was too friendly with strangers.
+            </p>
+          </article>
+          <aside>
+            <h2>Calico's Redeeming Qualities</h2>
+            <ul>
+              <li key="itemOne">Good at sleeping</li>
+              <li key="itemTwo">Keeps my feet warm</li>
+              <li key="itemThree">Soft</li>
+            </ul>
+          </aside>
+        </main>
+      );
 
       const Footer = () => {
         const year = new Date().getFullYear();
@@ -56,15 +49,13 @@
         );
       };
 
-      const App = () => {
-        return (
-          <React.Fragment>
-            <Header />
-            <Content />
-            <Footer />
-          </React.Fragment>
-        );
-      };
+      const App = () => (
+        <React.Fragment>
+          <Header />
+          <Content />
+          <Footer />
+        </React.Fragment>
+      );
 
       ReactDOM.render(<App />, document.getElementById("root"));
     </script>

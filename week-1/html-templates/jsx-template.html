@@ -11,32 +11,28 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      const Header = () => {
-        return (
-          <header>
-            <h1>Title of Page</h1>
-          </header>
-        );
-      };
+      const Header = () => (
+        <header>
+          <h1>Title of Page</h1>
+        </header>
+      );
 
-      const Content = () => {
-        return (
-          <main>
-            <article>
-              <h2>Title of Article</h2>
-              <p>Content of Article</p>
-            </article>
-            <aside>
-              <h2>Title of Sidebar</h2>
-              <ul>
-                <li key="itemOne">Item 1</li>
-                <li key="itemTwo">Item 2</li>
-                <li key="itemThree">Item 3</li>
-              </ul>
-            </aside>
-          </main>
-        );
-      };
+      const Content = () => (
+        <main>
+          <article>
+            <h2>Title of Article</h2>
+            <p>Content of Article</p>
+          </article>
+          <aside>
+            <h2>Title of Sidebar</h2>
+            <ul>
+              <li key="itemOne">Item 1</li>
+              <li key="itemTwo">Item 2</li>
+              <li key="itemThree">Item 3</li>
+            </ul>
+          </aside>
+        </main>
+      );
 
       const Footer = () => {
         const year = new Date().getFullYear();
@@ -47,15 +43,13 @@
         );
       };
 
-      const App = () => {
-        return (
-          <React.Fragment>
-            <Header />
-            <Content />
-            <Footer />
-          </React.Fragment>
-        );
-      };
+      const App = () => (
+        <React.Fragment>
+          <Header />
+          <Content />
+          <Footer />
+        </React.Fragment>
+      );
 
       ReactDOM.render(<App />, document.getElementById("root"));
     </script>
