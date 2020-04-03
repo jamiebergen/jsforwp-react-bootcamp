@@ -3,7 +3,7 @@ import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
 
-function App() {
+const App = () => {
   return (
     <React.Fragment>
       <Header />
@@ -11,6 +11,6 @@ function App() {
       <Footer />
     </React.Fragment>
   );
-}
+};
 
 export default App;
