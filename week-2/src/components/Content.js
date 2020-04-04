@@ -1,5 +1,5 @@
 import React from "react";
-import calicoImage from "../images/calico.jpg";
+import calicoImage from "../assets/calico.jpg";
 
 const Content = () => {
   return (
