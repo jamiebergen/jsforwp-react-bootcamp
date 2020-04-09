@@ -1,6 +1,8 @@
 # React Bootcamp: Week 3
 
-This week, we're moving our simple one-page website with a static header, footer and main content area into a project bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This week, we're learning about props and state in React. The simple one-page website from previous weeks now has a simple login screen. After you enter your name and click the "Login" button, you will see the one-page website. Utilizing props and state allows us to greet the user by name after they've logged in.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
