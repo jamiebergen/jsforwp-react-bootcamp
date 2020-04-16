@@ -41,12 +41,12 @@ class App extends React.Component {
   };
 
   getSelectedPostContent = () => {
-    return this.getSelectedPost().content.rendered;
+    return { __html: this.getSelectedPost().content.rendered };
   };
 
   getSelectedPostTitle = () => {
     console.log("test");
-    return this.getSelectedPost().title.rendered;
+    return this.getSelectedPost().title.rendered.replace(/&nbsp;/gi, " ");
   };
 
   render() {
@@ -55,7 +55,9 @@ class App extends React.Component {
         <h1>Posts</h1>
         {this.state.posts.map((post) => (
           <li key={post.id} data-id={post.id} className="list-item">
-            <button onClick={this.postClick}>{post.title.rendered}</button>
+            <button onClick={this.postClick}>
+              {post.title.rendered.replace(/&nbsp;/gi, " ")}
+            </button>
           </li>
         ))}
       </>
@@ -63,8 +65,7 @@ class App extends React.Component {
       <>
         <button onClick={this.returnClick}>Back to Post List</button>
         <h1>{this.getSelectedPostTitle()}</h1>
-        <p>Selected Post ID: {this.state.selectedPostID}</p>
-        {this.getSelectedPostContent()}
+        <div dangerouslySetInnerHTML={this.getSelectedPostContent()} />
       </>
     );
   }
