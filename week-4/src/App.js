@@ -40,32 +40,32 @@ class App extends React.Component {
     );
   };
 
-  getSelectedPostContent = () => {
-    return { __html: this.getSelectedPost().content.rendered };
-  };
-
-  getSelectedPostTitle = () => {
-    console.log("test");
-    return this.getSelectedPost().title.rendered.replace(/&nbsp;/gi, " ");
-  };
-
   render() {
     return this.state.displayingPostList ? (
       <>
         <h1>Posts</h1>
         {this.state.posts.map((post) => (
-          <li key={post.id} data-id={post.id} className="list-item">
-            <button onClick={this.postClick}>
-              {post.title.rendered.replace(/&nbsp;/gi, " ")}
-            </button>
+          <li key={post.id} data-id={post.id}>
+            <button
+              onClick={this.postClick}
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+            ></button>
           </li>
         ))}
       </>
     ) : (
       <>
         <button onClick={this.returnClick}>Back to Post List</button>
-        <h1>{this.getSelectedPostTitle()}</h1>
-        <div dangerouslySetInnerHTML={this.getSelectedPostContent()} />
+        <h1
+          dangerouslySetInnerHTML={{
+            __html: this.getSelectedPost().title.rendered,
+          }}
+        ></h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: this.getSelectedPost().content.rendered,
+          }}
+        />
       </>
     );
   }
