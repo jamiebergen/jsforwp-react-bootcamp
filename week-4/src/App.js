@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import PostList from "./components/PostList";
+import SinglePost from "./components/SinglePost";
 
 class App extends React.Component {
   state = {
@@ -42,31 +44,12 @@ class App extends React.Component {
 
   render() {
     return this.state.displayingPostList ? (
-      <>
-        <h1>Posts</h1>
-        {this.state.posts.map((post) => (
-          <li key={post.id} data-id={post.id}>
-            <button
-              onClick={this.postClick}
-              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-            ></button>
-          </li>
-        ))}
-      </>
+      <PostList posts={this.state.posts} postClick={this.postClick} />
     ) : (
-      <>
-        <button onClick={this.returnClick}>Back to Post List</button>
-        <h1
-          dangerouslySetInnerHTML={{
-            __html: this.getSelectedPost().title.rendered,
-          }}
-        ></h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: this.getSelectedPost().content.rendered,
-          }}
-        />
-      </>
+      <SinglePost
+        selectedPost={this.getSelectedPost()}
+        returnClick={this.returnClick}
+      />
     );
   }
 }
