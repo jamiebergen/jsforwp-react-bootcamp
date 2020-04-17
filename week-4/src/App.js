@@ -13,7 +13,8 @@ class App extends React.Component {
 
   apiUrl = `https://ma.tt/wp-json/wp/v2/posts`;
 
-  componentDidMount() {
+  fetchPosts = () => {
+    this.setState({ postsLoaded: false });
     fetch(this.apiUrl)
       .then((response) => response.json())
       .then((posts) => {
@@ -23,6 +24,10 @@ class App extends React.Component {
         });
       })
       .catch((error) => console.error(error));
+  };
+
+  componentDidMount() {
+    this.fetchPosts();
   }
 
   postClick = (e) => {
@@ -52,6 +57,7 @@ class App extends React.Component {
         posts={this.state.posts}
         postClick={this.postClick}
         postsLoaded={this.state.postsLoaded}
+        refreshPosts={this.fetchPosts}
       />
     ) : (
       <SinglePost
