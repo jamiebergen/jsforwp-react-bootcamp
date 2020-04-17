@@ -1,7 +1,7 @@
 import React from "react";
 
-const PostList = ({ posts, postClick }) => {
-  return (
+const PostList = ({ posts, postsLoaded, postClick }) => {
+  return postsLoaded ? (
     <>
       <h1>Posts</h1>
       {posts.map((post) => (
@@ -12,6 +12,11 @@ const PostList = ({ posts, postClick }) => {
           ></button>
         </li>
       ))}
+    </>
+  ) : (
+    <>
+      <h1>Posts</h1>
+      <p>Loading...</p>
     </>
   );
 };

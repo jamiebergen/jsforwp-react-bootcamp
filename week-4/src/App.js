@@ -8,6 +8,7 @@ class App extends React.Component {
     posts: [],
     displayingPostList: true,
     selectedPostID: 0,
+    postsLoaded: false,
   };
 
   apiUrl = `https://ma.tt/wp-json/wp/v2/posts`;
@@ -16,7 +17,10 @@ class App extends React.Component {
     fetch(this.apiUrl)
       .then((response) => response.json())
       .then((posts) => {
-        this.setState({ posts: posts });
+        this.setState({
+          posts: posts,
+          postsLoaded: true,
+        });
       })
       .catch((error) => console.error(error));
   }
@@ -44,7 +48,11 @@ class App extends React.Component {
 
   render() {
     return this.state.displayingPostList ? (
-      <PostList posts={this.state.posts} postClick={this.postClick} />
+      <PostList
+        posts={this.state.posts}
+        postClick={this.postClick}
+        postsLoaded={this.state.postsLoaded}
+      />
     ) : (
       <SinglePost
         selectedPost={this.getSelectedPost()}
