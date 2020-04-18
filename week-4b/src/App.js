@@ -1,71 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import PostList from "./components/PostList";
 import SinglePost from "./components/SinglePost";
 
-class App extends React.Component {
-  state = {
-    posts: [],
-    displayingPostList: true,
-    selectedPostID: 0,
-    postsLoaded: false,
-  };
+const App = () => {
+  const [posts, setPosts] = useState([]);
+  const [displayingPostList, setDisplayingPostList] = useState(true);
+  const [selectedPostID, setSelectedPostID] = useState(0);
+  const [postsLoaded, setPostsLoaded] = useState(false);
 
-  apiUrl = `https://ma.tt/wp-json/wp/v2/posts`;
+  const apiUrl = `https://ma.tt/wp-json/wp/v2/posts`;
 
-  fetchPosts = () => {
-    this.setState({ postsLoaded: false });
-    fetch(this.apiUrl)
+  const fetchPosts = () => {
+    setPostsLoaded(false);
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((posts) => {
-        this.setState({
-          posts: posts,
-          postsLoaded: true,
-        });
+        setPosts(posts);
+        setPostsLoaded(true);
       })
       .catch((error) => console.error(error));
   };
 
-  componentDidMount() {
-    this.fetchPosts();
-  }
+  useEffect(() => fetchPosts(), []);
 
-  postClick = (e) => {
+  const postClick = (e) => {
     const selectedPostID = e.target.parentNode.dataset.id;
-    this.setState({
-      displayingPostList: false,
-      selectedPostID,
-    });
+    setDisplayingPostList(false);
+    setSelectedPostID(selectedPostID);
   };
 
-  returnClick = () => {
-    this.setState({
-      displayingPostList: true,
-      selectedPostID: 0,
-    });
+  const returnClick = () => {
+    setDisplayingPostList(true);
+    setSelectedPostID(0);
   };
 
-  getSelectedPost = () => {
-    return this.state.posts.find(
-      ({ id }) => id === parseInt(this.state.selectedPostID)
-    );
+  const getSelectedPost = () => {
+    return posts.find(({ id }) => id === parseInt(selectedPostID));
   };
 
-  render() {
-    return this.state.displayingPostList ? (
-      <PostList
-        posts={this.state.posts}
-        postClick={this.postClick}
-        postsLoaded={this.state.postsLoaded}
-        refreshPosts={this.fetchPosts}
-      />
-    ) : (
-      <SinglePost
-        selectedPost={this.getSelectedPost()}
-        returnClick={this.returnClick}
-      />
-    );
-  }
-}
+  return displayingPostList ? (
+    <PostList
+      posts={posts}
+      postClick={postClick}
+      postsLoaded={postsLoaded}
+      refreshPosts={fetchPosts}
+    />
+  ) : (
+    <SinglePost selectedPost={getSelectedPost()} returnClick={returnClick} />
+  );
+};
 
 export default App;
