@@ -20,11 +20,13 @@ class PostForm extends Component {
         post: {
           id: this.props.post.id,
           slug: this.props.post.slug,
-          title: "",
-          content: "", // !!! This isn't working
+          title: this.props.post.title,
+          content: this.props.post.content, // This doesn't clear the editor
         },
       });
-      // !!! Need to clear out editor
+      // Clear out Quill editor
+      const quillEditor = document.querySelector(".ql-editor");
+      quillEditor.innerHTML = "";
     }
   }
 
