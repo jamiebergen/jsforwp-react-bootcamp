@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Posts from "./components/Posts";
+import Message from "./components/Message";
 import Post from "./components/Post";
 import PostForm from "./components/PostForm";
 import NotFound from "./components/NotFound";
@@ -12,6 +13,7 @@ import "./App.css";
 class App extends Component {
   state = {
     posts: [],
+    message: null,
   };
 
   addNewPost = (post) => {
@@ -19,7 +21,13 @@ class App extends Component {
     post.slug = encodeURIComponent(
       post.title.toLowerCase().split(" ").join("-")
     );
-    this.setState({ posts: [...this.state.posts, post] });
+    this.setState({
+      posts: [...this.state.posts, post],
+      message: "saved",
+    });
+    setTimeout(() => {
+      this.setState({ message: null });
+    }, 1600);
   };
 
   render() {
@@ -27,6 +35,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Header />
+          {this.state.message && <Message type={this.state.message} />}
           <Switch>
             <Route
               exact
