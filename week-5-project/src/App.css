@@ -28,8 +28,8 @@
   padding: 1rem;
 }
 
-  .App-header a {
-    color:#fff;
+  .App-header a, .App-header button {
+    color:#fff !important;
     font-weight: normal;
   }
   .App-header ul {    
