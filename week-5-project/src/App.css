@@ -122,7 +122,9 @@
   border: none;
   font-size: inherit;
   color: #26738D;
-  text-decoration: underline;  
+  text-decoration: underline;
+  background: none;
+  padding: 0;
 }
 
   .App button.linkLike:hover {
