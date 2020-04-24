@@ -6,7 +6,7 @@ const Header = ({ isAuthenticated, onLogout }) => {
     <header className="App-header">
       <ul className="container">
         <li key="home">
-          <Link to={`/`}>Site Title</Link>
+          <Link to={`/`}>Jamie's Site</Link>
         </li>
         {isAuthenticated ? (
           <>
